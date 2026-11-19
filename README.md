@@ -8,6 +8,10 @@ Copied file for file from mainsite at `ce3e5a0` (2026-07-02).
 - **The live page is `index - Copy.html`** ("Charlotte Electrician"),
   served from Firebase project `cooper-electrical`. `index.html` is the
   older "Concord Electrician" version. Make test changes in the copy.
-- **The contact form is wired to the real Firebase project.** A test
-  submission from this copy goes into the real leads. Don't send one.
+- **Booking goes through the real Housecall Pro.** Every booking button
+  and service pill on `index - Copy.html` opens HCP's booking pop-up, or
+  HCP's booking page if the pop-up can't load. A test booking is a real
+  booking request in HCP: don't submit one, or delete it in HCP after.
+- `index.html` still has the old Firebase form, which writes to the
+  real leads.
 - Nothing in this repo deploys to the live site.
