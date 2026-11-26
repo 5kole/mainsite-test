@@ -30,6 +30,19 @@
     gtag("config", "AW-17992897776/h35oCJ_-kaccEPCp14ND", {
       "phone_conversion_number": "(704) 609-0965"
     });
+
+    // Google Ads: "Book online" conversion, fired when a Housecall Pro button is clicked.
+    // Paste the conversion label from Google Ads (Goals > Conversions > the booking
+    // action > Tag setup), e.g. "AbCdEfGhIjKlMnOp". Empty = nothing is sent.
+    var ADS_BOOKING_LABEL = "";
+    function adsBookingConversion() {
+      if (ADS_BOOKING_LABEL && typeof gtag === "function") {
+        gtag("event", "conversion", {
+          send_to: "AW-17992897776/" + ADS_BOOKING_LABEL,
+          transport_type: "beacon"
+        });
+      }
+    }
   </script>
   <!-- Housecall Pro online booking -->
   <script async src="https://online-booking.housecallpro.com/script.js?token=3bcc7813550e48a2b8075abcfa8fb0d7&orgName=Cooper-Electrical"></script>
@@ -250,6 +263,10 @@
   <script>
     document.querySelectorAll('.hcp-book').forEach(function (el) {
       el.addEventListener('click', function (e) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'booking_click', { page: 'home' });
+        }
+        adsBookingConversion();
         if (window.HCPWidget && typeof window.HCPWidget.openModal === 'function') {
           e.preventDefault();
           window.HCPWidget.openModal();
